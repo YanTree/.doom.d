@@ -4,28 +4,24 @@
 ;; sync' after modifying this file!
 
 
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets.
 (setq user-full-name "YanTree"
       user-mail-address "yantreeland@outlook.com"
 
       doom-scratch-initial-major-mode 'lisp-interaction-mode
 
-      ;; company
-      company-idle-delay 0.3)
+      ;; I like `doom-monokai-pro' theme, Flagship `doom-one-light'.
+      doom-theme 'doom-monokai-pro
 
-;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
-;; are the three important ones:
+      ;; `nil', disabled line numbers. `relative', enable relative line numbers.
+      display-line-numbers-type t
+
+      ;; company
+      company-idle-delay 2)
+
+
 ;;
-;; + `doom-font'
-;; + `doom-variable-pitch-font'
-;; + `doom-big-font' -- used for `doom-big-font-mode'; use this for
-;;   presentations or streaming.
-;;
-;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
-;; font string. You generally only need these two:
-;; (setq doom-font (font-spec :family "Sarasa Mono CL" :size 16 :weight 'semi-light)
-;;       doom-variable-pitch-font (font-spec :family "sans" :size 16))
+;;; UI
+
 (when IS-WINDOWS
   (when (display-graphic-p)
     (defun set-font (english chinese english-size chinese-size)
@@ -37,40 +33,35 @@
     (set-font "JetBrains Mono" "WenQuanYi Micro Hei" 16 14)
     ))
 
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-monokai-pro)
-
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
-
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+;; Prevents some cases of Emacs flickering
+(add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 
 
-
+;;
 ;;; Modules
 
 (after! ivy
   ;; I prefer search matching to be ordered; it's more precise
   (add-to-list 'ivy-re-builders-alist '(counsel-projectile-find-file . ivy--regex-plus)))
 
-
 ;; Switch to the new window after splitting
 (setq evil-split-window-below t
       evil-vsplit-window-right t)
 
-
-;; Show time
+;;; :ui time
 (setq display-time-24hr-format t
       display-time-format " %H:%M - %b %d"                    ;;格式
       display-time-load-average-threshold nil                 ;;不显示 load average
       system-time-locale "C")                                 ;;英文显示日期
 (display-time-mode 1)
 
+;;; :lang org
+(setq
+ org-directory "~/Documents/org"
+ org-hide-leading-stars t         ;; hide stars
+ org-export-coding-system 'utf-8
+ org-use-sub-superscripts nil     ;; the_sliver_search
+ )
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
