@@ -62,6 +62,16 @@
  org-export-coding-system 'utf-8
  org-use-sub-superscripts nil     ;; the_sliver_search
  )
+
+;;; :lang scheme
+(after! geiser
+  (if IS-WINDOWS
+      (setq geiser-chez-binary "C:\\Program Files\\Chez Scheme 9.5.4\\bin\\ta6nt\\scheme")))
+
+
+;;
+;;; addtional packages
+
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
