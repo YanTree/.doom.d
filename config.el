@@ -16,22 +16,34 @@
       display-line-numbers-type t
 
       ;; company
-      company-idle-delay 2)
+      company-idle-delay 1.2)
 
 
 ;;
-;;; UI
+;;; Font
+(when (display-graphic-p)
+  (defun font-installed-p (font-name)
+    "Check if font with FONT-NAME is available."
+    (find-font (font-spec :name font-name)))
 
-(when IS-WINDOWS
-  (when (display-graphic-p)
-    (defun set-font (english chinese english-size chinese-size)
-      (set-face-attribute 'default nil :font
-                          (format   "%s:pixelsize=%d"  english english-size))
-      (dolist (charset '(kana han symbol cjk-misc bopomofo))
-        (set-fontset-font (frame-parameter nil 'font) charset
-                          (font-spec :family chinese :size chinese-size))))
-    (set-font "JetBrains Mono" "WenQuanYi Micro Hei" 16 14)
-    ))
+  ;; Set default font
+  (cl-loop for font in '("JetBrains Mono" "Fira Code")
+           when (font-installed-p font)
+           return (set-face-attribute 'default nil
+                                      :font font
+                                      :height (cond (IS-MAC 130)
+                                                    (IS-WINDOWS 100)
+                                                    (t 100))))
+
+  ;; Specify font for all unicode characters
+  (cl-loop for font in '("Symbola" "Symbol")
+           when (font-installed-p font)
+           return(set-fontset-font t 'unicode font nil 'prepend))
+
+  ;; Specify font for Chinese characters
+  (cl-loop for font in '("WenQuanYi Micro Hei" "Microsoft Yahei")
+           when (font-installed-p font)
+           return (set-fontset-font t '(#x4e00 . #x9fff) font)))
 
 ;; Prevents some cases of Emacs flickering
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
