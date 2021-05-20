@@ -6,13 +6,9 @@
 ;; use 'M-x doom/reload'.
 
 
-;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
-;(package! some-package)
-
-
 ;; Flash follow your cursor around, so you don't lose it.
-;; (package! beacon)
-
+(package! beacon)
+(package! move-dup)
 ;;
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
