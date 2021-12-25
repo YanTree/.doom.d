@@ -23,6 +23,14 @@
 (add-load-path! "~/projects/emacs/snippets")
 
 
+;; Switch input type(english and chinese)
+(defun emacs-ime-disable()
+  (w32-set-ime-open-status nil))
+(defun emacs-ime-enable()
+  (w32-set-ime-open-status t))
+(add-hook 'evil-insert-state-entry-hook #'emacs-ime-enable)
+(add-hook 'evil-insert-state-exit-hook #'emacs-ime-disable)
+
 ;;
 ;;; Theme & Font
 
