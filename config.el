@@ -20,7 +20,7 @@
       confirm-kill-emacs nil)
 
 ;; My customize snippets(additional!)
-(add-load-path! "~/projects/emacs/snippets")
+(add-load-path! "~/Library/emacs/snippets")
 
 
 ;; Switch input type(english and chinese)
@@ -35,8 +35,8 @@
 ;;; Theme & Font
 
 ;; Frame size
-(add-to-list 'default-frame-alist '(height . 68))
-(add-to-list 'default-frame-alist '(width . 192))
+(add-to-list 'default-frame-alist '(height . 54))
+(add-to-list 'default-frame-alist '(width . 162))
 
 ;; load theme `doom-one' `doom-monokai-pro'
 (setq doom-theme 'doom-one)
@@ -62,7 +62,7 @@
 ;;; :lang org
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/Library/org/")
 
 
 ;;
