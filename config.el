@@ -67,6 +67,14 @@
 
 ;;
 ;;; 3rd Packages
+(use-package! fanyi
+  :config
+  ;; Setting sound player
+  (setq fanyi-sound-player "mpv")
+  ;; Toggle fast translate with a keybinding
+  (map! :leader
+        (:prefix-map ("t" . "toggle")
+         :desc "Translate"      "t" #'fanyi-dwim2)))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
