@@ -6,6 +6,7 @@
 ;; use 'M-x doom/reload'.
 
 (package! fanyi)
+(package! code-review :disable t) ;; Some bug in emacs28.5
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
