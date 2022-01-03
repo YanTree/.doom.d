@@ -38,7 +38,7 @@
 (add-to-list 'default-frame-alist '(height . 54))
 (add-to-list 'default-frame-alist '(width . 162))
 
-;; load theme `doom-one' `doom-monokai-pro'
+;; load theme `one' `dracula' `vibrant' `monokai-pro'
 (setq doom-theme 'doom-one)
 
 ;; English & Chinese Font
