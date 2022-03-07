@@ -20,7 +20,7 @@
       confirm-kill-emacs nil)
 
 ;; My customize snippets(additional!)
-(add-load-path! "~/Library/emacs/snippets")
+;; (add-load-path! "~/Library/emacs/snippets")
 
 
 ;; Switch input type(english and chinese)
