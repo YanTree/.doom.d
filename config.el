@@ -4,10 +4,13 @@
 ;; sync' after modifying this file!
 
 
+(setq frame-title-format '("BUFFER - %b"))
+
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "YanTree"
       user-mail-address "yantreeland@outlook.com")
+
 
 
 ;; Set `lisp-interaction-mode' with initial major mode
@@ -20,7 +23,7 @@
       confirm-kill-emacs nil)
 
 ;; My customize snippets(additional!)
-(add-load-path! "~/Library/emacs/doom-snippets")
+;; (add-load-path! "~/Library/emacs/doom-snippets")
 
 ;; Switch input type(english and chinese)
 (defun emacs-ime-disable()
@@ -40,9 +43,19 @@
 ;; load theme `one' `dracula' `vibrant' `monokai-pro'
 (setq doom-theme 'doom-one)
 
-;; English & Chinese Font
-(setq doom-font (font-spec :family "Consolas" :size 14 :weight 'regular)
-      doom-variable-pitch-font (font-spec :family "WenQuanYi Micro Hei" :size 12))
+(when IS-WINDOWS
+  (when (display-graphic-p)
+    (defun set-font (english chinese english-size chinese-size unicode)
+      ;; English font
+      (set-face-attribute 'default nil :font
+                          (format   "%s:pixelsize=%d"  english english-size))
+      ;; all unicode characters
+      (set-fontset-font t 'unicode unicode nil 'prepend)
+      ;; Chinese characters
+      (dolist (charset '(kana han symbol cjk-misc bopomofo))
+        (set-fontset-font (frame-parameter nil 'font) charset
+                          (font-spec :family chinese :size chinese-size))))
+    (set-font "Consolas" "LXGW WenKai" 14 14 "Segoe UI Symbol")))
 
 ;; Prevents some cases of Emacs flickering
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
@@ -52,7 +65,6 @@
 ;;; Modules
 
 ;;; :editor evil
-
 ;; Focus new window after splitting
 (setq evil-split-window-below t
       evil-vsplit-window-right t)
