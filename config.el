@@ -35,7 +35,7 @@
 
 
 ;;
-;;; Theme & Font
+;;; UI
 
 ;; Frame size
 (add-to-list 'default-frame-alist '(height . 48))
@@ -73,6 +73,24 @@
       evil-vsplit-window-right t)
 
 
+;;; :UI modeline
+;; An evil mode indicator is redundant with cursor shape
+(advice-add #'doom-modeline-segment--modals :override #'ignore)
+
+
+;;; :tools lsp
+;; Disable invasive lsp-mode features
+(after! lsp-mode
+  (setq lsp-enable-symbol-highlighting nil
+        ;; If an LSP server isn't present when I start a prog-mode buffer, you
+        ;; don't need to tell me. I know. On some machines I don't care to have
+        ;; a whole development environment for some ecosystems.
+        lsp-enable-suggest-server-download nil))
+(after! lsp-ui
+  (setq lsp-ui-sideline-enable nil  ; no more useful than flycheck
+        lsp-ui-doc-enable nil))     ; redundant with K
+
+
 ;;; :lang org
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -89,6 +107,7 @@
   (map! :leader
         (:prefix-map ("t" . "toggle")
          :desc "Translate"      "t" #'fanyi-dwim2)))
+
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
