@@ -3,14 +3,13 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
-
+;; Change frame title style
 (setq frame-title-format '("BUFFER - %b"))
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "YanTree"
       user-mail-address "yantreeland@outlook.com")
-
 
 
 ;; Set `lisp-interaction-mode' with initial major mode
@@ -25,6 +24,7 @@
 ;; My customize snippets(additional!)
 ;; (add-load-path! "~/Library/emacs/doom-snippets")
 
+
 ;; Switch input type(english and chinese)
 (defun emacs-ime-disable()
   (w32-set-ime-open-status nil))
@@ -33,16 +33,18 @@
 (add-hook 'evil-insert-state-entry-hook #'emacs-ime-enable)
 (add-hook 'evil-insert-state-exit-hook #'emacs-ime-disable)
 
+
 ;;
 ;;; Theme & Font
 
 ;; Frame size
-(add-to-list 'default-frame-alist '(height . 54))
-(add-to-list 'default-frame-alist '(width . 162))
+(add-to-list 'default-frame-alist '(height . 48))
+(add-to-list 'default-frame-alist '(width . 130))
 
 ;; load theme `one' `dracula' `vibrant' `monokai-pro'
 (setq doom-theme 'doom-one)
 
+;; Font setting
 (when IS-WINDOWS
   (when (display-graphic-p)
     (defun set-font (english chinese english-size chinese-size unicode)
@@ -54,7 +56,8 @@
       ;; Chinese characters
       (dolist (charset '(kana han symbol cjk-misc bopomofo))
         (set-fontset-font (frame-parameter nil 'font) charset
-                          (font-spec :family chinese :size chinese-size))))
+                          (font-spec :family chinese :size chinese-size)))
+      (run-hooks 'after-setting-font-hook))
     (set-font "Consolas" "LXGW WenKai" 14 14 "Segoe UI Symbol")))
 
 ;; Prevents some cases of Emacs flickering
