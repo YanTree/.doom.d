@@ -22,7 +22,7 @@
       confirm-kill-emacs nil)
 
 ;; My customize snippets(additional!)
-;; (add-load-path! "~/Library/emacs/doom-snippets")
+;; (add-load-path! "~/Library/emacs/snippets")
 
 
 ;; Switch input type(english and chinese)
@@ -42,7 +42,8 @@
 (add-to-list 'default-frame-alist '(width . 130))
 
 ;; load theme `one' `dracula' `vibrant' `monokai-pro'
-(setq doom-theme 'doom-one)
+;; `doom-tomorrow-day' `doom-nord-light'
+(setq doom-theme 'doom-tomorrow-night)
 
 ;; Font setting
 (when IS-WINDOWS
@@ -71,6 +72,12 @@
 ;; Focus new window after splitting
 (setq evil-split-window-below t
       evil-vsplit-window-right t)
+
+
+;;; :UI doom-dashboard
+;; (setq fancy-splash-image (concat doom-private-dir "cat.png"))
+;; Hide the menu for as minimalistic a startup screen as possible.
+;; (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
 
 
 ;;; :UI modeline
