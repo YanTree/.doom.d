@@ -43,7 +43,7 @@
 
 ;; load theme `one' `dracula' `vibrant' `monokai-pro'
 ;; `doom-tomorrow-day' `doom-nord-light'
-(setq doom-theme 'doom-tomorrow-night)
+(setq doom-theme 'doom-nord-light)
 
 ;; Font setting
 (when IS-WINDOWS
@@ -101,7 +101,8 @@
 ;;; :lang org
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Library/org/")
+(setq org-hide-emphasis-markers t   ; disable like =mark=
+      org-directory "~/Library/org/")
 
 
 ;;
