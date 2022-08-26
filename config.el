@@ -59,7 +59,7 @@
         (set-fontset-font (frame-parameter nil 'font) charset
                           (font-spec :family chinese :size chinese-size)))
       (run-hooks 'after-setting-font-hook))
-    (set-font "Consolas" "LXGW WenKai" 14 14 "Segoe UI Symbol")))
+    (set-font "Maple Mono SC NF" "Maple Mono SC NF" 14 14 "Segoe UI Symbol")))
 
 ;; Prevents some cases of Emacs flickering
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
